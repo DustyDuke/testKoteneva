@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function App() {
   const [counter, setCounter] = useState(0)
-    const [value, setValue] = useState()
+    const [value, setValue] = useState('')
      const increment = () => {
         setCounter(prev => prev + 1)
     }
@@ -16,7 +16,8 @@ function App() {
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-       counter > 0 ? setCounter(value) : alert('число не должно быть отрицательным')
+       value > 0 ? setCounter(value) : alert('число не должно быть отрицательным')
+        setValue("")
     }
   return (
     <div>
@@ -25,7 +26,7 @@ function App() {
       <button onClick={decrement}>-</button>
         <br />
           <form onSubmit={handleSubmit} >
-              <input id="input" type="number" placeholder="Введите число" onChange={handleChange}/> <button type="submit">установить значение</button>
+              <input id="input" type="number" placeholder="Введите число" value={value} onChange={handleChange}/> <button type="submit">установить значение</button>
           </form>
     </div>
   );
@@ -34,6 +35,5 @@ function App() {
 export default App;
 
 App.propTypes = {
-  count: PropTypes.number,
-  value: PropTypes.number
+  count: PropTypes.number
 };
